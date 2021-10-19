@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<html>
+<head>
+	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Boostrap-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+	<script src="https://kit.fontawesome.com/2115fb84e0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- CSS PROPIO-->
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>CONTROL INGRESOS Y GASTOS</title>
+</head>
+<body class="containe-fluid">
+	<main>
+		<section class="banner">
+		</section>
+			<div class="container-sm p-4">
+				<h1 class="historia">PRESUPUESTO DEL</h1>
+				<br>
+				<h2 class="descripcion" id="Fecha"></h2> 
+				<br>
+				<h2 id="montoTotal" class="descripcion">+ 0.00</h2>
+				<br>
+					<div class="input-group input-group-lg mb-9 d-flex justify-content-center">
+						<span class="input-group-text btn-light">INGRESOS:</span>
+						<span class="input-group-text btn-light" id="Tingreso"></span>
+					</div>
+					<br>
+					<div class="input-group input-group-lg mb-9 d-flex justify-content-center">
+						<span class="input-group-text btn-warning">EGRESOS:</span>
+						<span class="input-group-text btn-warning" id="Tgasto"></span>
+					</div>
+					<br>
+					<div class="input-group input-group-lg mb-9 d-flex justify-content-center">
+						<h4>PORCENTAJE DE EGRESOS    :</h4>
+						<span class="input-group-text btn-warning" id="porcentajetotal"></span>
+					</div>
+			</div>
+
+		<section class="separador">
+			<div class="skewarriba"></div>
+			<div class="separador"></div>
+			<div class="skewabajo"></div>
+		</section>
+	
+		<section>
+			<br>
+			<br>
+			<div class="row ">
+				<div class="col-md-6">
+					<div class="container container-fluid" >
+						<h2 class="d-flex justify-content-center">TRANSACCIÓN</h2>
+						<br>
+						<div class="form-group">
+							<select class="form-control" id="SeleccionIngresoGasto" onchange="opcion()">
+								<option>INGRESO</option>
+								<option>EGRESO</option>
+							</select>
+						</div>
+						<br>
+						<div class="form-group mb-6">
+							<input type="text" class="form-control" id="descripcion" aria-describedby="descripcion" placeholder="DESCRIPCIÓN"  required>
+							<span id="errordescripcion"></span>
+						</div>
+						<br>
+						<div class="form-group mb-6">
+							<input type="number" class="form-control" id="monto" aria-describedby="monto" placeholder="MONTO" min="0.01" step="0.01" required>
+							<span id="errormonto"></span>
+						</div>
+						<br>
+						<br>
+						<button class="btn-warning" type="submit" id="btnagregar" onclick="validacion();limpiar()">AGREGAR</button>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+						<li class="nav-item" role="presentation">
+						  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">INGRESOS</button>
+						</li>
+						<li class="nav-item" role="presentation">
+						  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">EGRESOS</button>
+						</li>
+					  </ul>
+					  <div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+							<table class="table table-sm tableIngreso" id="Tabla_Ingreso">
+							</table>
+						</div>
+						<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+							<table class="table table-sm tableEngreso" id="Tabla_Egreso">
+							</table>
+						</div>
+					  </div>
+				</div>
+			</div>
+        </section>
+	</main>
+<br>
+<br>
+<br>
+<footer></footer>
+  	<!-- JS Librerias-->
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	  <!-- JS PROPIO-->
+	<script src="./js/fecha.js"></script>
+	<script src="./js/control.js"></script>
+</body>
+</html>
